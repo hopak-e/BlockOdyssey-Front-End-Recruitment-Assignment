@@ -1,0 +1,59 @@
+@import '/src/styles/media.scss';
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.count {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    height: 6%;
+}
+
+.list {
+    height: 653px;
+
+    overflow-y: auto;
+    background-color: #ffffff;
+    border-radius: 10px;
+}
+
+.list_title {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    height: 8%;
+    border-bottom: 1px solid #d7d7d7;
+    & > .number {
+        flex: 1;
+    }
+    & > .name {
+        flex: 2.5;
+    }
+    & > .brand {
+        flex: 1.5;
+    }
+    & > .content {
+        flex: 3.5;
+    }
+    & > .price {
+        flex: 1;
+    }
+    & > .grade {
+        flex: 0.9;
+    }
+    & > .stock {
+        flex: 0.8;
+    }
+    @include tablet {
+        font-size: 0.8rem;
+    }
+    @include mobile {
+        padding: 0 0.3rem;
+        font-size: 0.5rem;
+    }
+}

@@ -1,34 +1,30 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import { useEffect } from 'react'
+import { useLocation, useSearchParams } from 'react-router-dom'
+
+import Products from 'pages/Products'
+import { options } from 'store/optionReducer'
+import { useAppDispatch, useAppSelector } from 'store/store'
 
 function App() {
-  const [count, setCount] = useState(0)
+    const { search } = useLocation()
+    const [searchParams, setSearchParams] = useSearchParams()
+    const dispatch = useAppDispatch()
+    const selector = useAppSelector((state) => state.optionReducer)
 
-  return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
-  )
+    useEffect(() => {
+        if (!search) setSearchParams(selector)
+        const obj: Record<string, string> = { ...selector }
+        for (const [key, value] of searchParams.entries()) {
+            obj[key] = value
+            dispatch(options({ ...obj }))
+        }
+    }, [setSearchParams])
+
+    return (
+        <>
+            <Products />
+        </>
+    )
 }
 
 export default App
