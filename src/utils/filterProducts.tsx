@@ -1,9 +1,9 @@
-import { SEARCH_NAME } from 'constants/search'
+import { SEARCH_TYPE_OBJ } from 'constants/search'
 import getKeyByValue from './getKeyByValue'
 import { Products } from 'types/products'
 
 const filterProducts = (data: Products[] | undefined, type: string, keyword: string) => {
-    const key = getKeyByValue(SEARCH_NAME, type)
+    const key = getKeyByValue(SEARCH_TYPE_OBJ, type)
 
     if (keyword === '') return data
     if (data && key) {

@@ -46,7 +46,7 @@ const Pagination = ({ newList }: Props) => {
                     handleDropDownClick={handleDropDownClick}
                     handleSelectClick={handleSelectClick}
                     options={PAGINATION_LIMIT}
-                    markArr={PAGINATION_LIMIT_OBJ}
+                    markObj={PAGINATION_LIMIT_OBJ}
                 />
             </div>
             <button disabled={page === '1'} onClick={handlePrevBtnClick}>

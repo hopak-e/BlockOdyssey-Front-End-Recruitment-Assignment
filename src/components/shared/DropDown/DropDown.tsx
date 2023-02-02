@@ -9,7 +9,7 @@ interface Props {
     handleDropDownClick: () => void
     handleSelectClick: (e: React.MouseEvent<HTMLLIElement>) => void
     options: string[]
-    markArr: Record<string, string>
+    markObj: Record<string, string>
 }
 
 const DropDown = ({ ...props }: Props) => {
@@ -25,7 +25,7 @@ const DropDown = ({ ...props }: Props) => {
                             onClick={props.handleSelectClick}
                             key={option}
                         >
-                            {props.markArr[option]}
+                            {props.markObj[option]}
                         </li>
                     ))}
                 </ul>

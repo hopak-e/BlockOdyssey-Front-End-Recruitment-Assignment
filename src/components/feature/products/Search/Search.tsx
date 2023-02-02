@@ -5,7 +5,7 @@ import useDropDown from 'hooks/useDropDown'
 import { useAppSelector } from 'store/store'
 import S from './Search.module.scss'
 import DropDown from 'components/shared/DropDown/DropDown'
-import { SEARCH_NAME, SEARCH_TYPE } from 'constants/search'
+import { SEARCH_TYPE_OBJ, SEARCH_TYPE } from 'constants/search'
 
 const Search = () => {
     const selector = useAppSelector((state) => state.optionReducer)
@@ -37,7 +37,7 @@ const Search = () => {
                     handleDropDownClick={handleDropDownClick}
                     handleSelectClick={handleSelectClick}
                     options={SEARCH_TYPE}
-                    markArr={SEARCH_NAME}
+                    markObj={SEARCH_TYPE_OBJ}
                 />
                 <form className={S.search_form} onSubmit={handleSearchSubmit}>
                     <input
