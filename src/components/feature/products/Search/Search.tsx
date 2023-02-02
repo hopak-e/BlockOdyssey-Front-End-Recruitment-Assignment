@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 
 import useDropDown from 'hooks/useDropDown'
+import { useAppSelector } from 'store/store'
 import S from './Search.module.scss'
-import { SEARCH_NAME, SEARCH_TYPE } from 'constants/search'
 import DropDown from 'components/shared/DropDown/DropDown'
-import { options } from 'store/optionReducer'
-import { useAppDispatch, useAppSelector } from 'store/store'
-import { useSearchParams } from 'react-router-dom'
+import { SEARCH_NAME, SEARCH_TYPE } from 'constants/search'
 
 const Search = () => {
     const selector = useAppSelector((state) => state.optionReducer)
     const { type, keyword } = selector
-    const [keywordInput, setKeywordInput] = useState(selector.keyword)
+    const [keywordInput, setKeywordInput] = useState(keyword)
     const [searchParams, setSearchParams] = useSearchParams()
     const { isShow: isShowType, handleDropDownClick, handleSelectClick } = useDropDown(selector)
 
@@ -40,12 +39,12 @@ const Search = () => {
                     options={SEARCH_TYPE}
                     markArr={SEARCH_NAME}
                 />
-                <input
-                    className={S.search_input}
-                    value={keywordInput}
-                    onChange={handleKeywordChange}
-                />
                 <form className={S.search_form} onSubmit={handleSearchSubmit}>
+                    <input
+                        className={S.search_input}
+                        value={keywordInput}
+                        onChange={handleKeywordChange}
+                    />
                     <button type="submit" className={S.search_btn}>
                         조회
                     </button>

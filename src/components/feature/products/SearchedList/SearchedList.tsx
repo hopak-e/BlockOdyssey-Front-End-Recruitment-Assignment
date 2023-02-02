@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
 
 import S from './SearchedList.module.scss'
@@ -14,7 +13,7 @@ const SearchedList = () => {
     const offset = (parseInt(page) - 1) * parseInt(limit)
     const newList = filterProducts(data, type, keyword)
 
-    if (!newList) return <div>hi</div>
+    if (!newList) return <div>로딩중...</div>
     return (
         <div className={S.container}>
             <p className={S.count}>{`검색된 데이터 : ${newList?.length}건`}</p>

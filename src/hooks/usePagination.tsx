@@ -1,4 +1,4 @@
-import { OMIT_DOT } from 'constants/pagination'
+import { ELLIPSIS } from 'constants/pagination'
 import { Pagination } from 'types/products'
 
 const usePagination = ({ totalPage, page }: Pagination) => {
@@ -8,6 +8,7 @@ const usePagination = ({ totalPage, page }: Pagination) => {
     const nextDot = totalPage - currentPage
 
     const frontBackPage = [currentPage - 1, currentPage, currentPage + 1]
+
     if (totalPage <= 5)
         return [
             ...Array(totalPage)
@@ -15,11 +16,11 @@ const usePagination = ({ totalPage, page }: Pagination) => {
                 .map((_, i) => i + 1),
         ]
     else if (prevDot > 3) {
-        if (nextDot > 3) return [1, OMIT_DOT, ...frontBackPage, OMIT_DOT, totalPage]
+        if (nextDot > 3) return [1, ELLIPSIS, ...frontBackPage, ELLIPSIS, totalPage]
         else
             return [
                 1,
-                OMIT_DOT,
+                ELLIPSIS,
                 ...Array(5)
                     .fill(0)
                     .map((_, i) => totalPage - 4 + i),
@@ -29,7 +30,7 @@ const usePagination = ({ totalPage, page }: Pagination) => {
             ...Array(5)
                 .fill(0)
                 .map((_, i) => i + 1),
-            OMIT_DOT,
+            ELLIPSIS,
             totalPage,
         ]
     }

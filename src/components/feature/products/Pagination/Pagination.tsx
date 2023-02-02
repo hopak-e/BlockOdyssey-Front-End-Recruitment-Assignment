@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { uid } from 'react-uid'
 
 import { useAppSelector } from 'store/store'
 import useDropDown from 'hooks/useDropDown'
 import DropDown from 'components/shared/DropDown/DropDown'
 import S from './Pagination.module.scss'
-import { OMIT_DOT, PAGINATION_LIMIT, PAGINATION_LIMIT_OBJ } from 'constants/pagination'
+import { ELLIPSIS, PAGINATION_LIMIT, PAGINATION_LIMIT_OBJ } from 'constants/pagination'
 import { Products } from 'types/products'
 import { useSearchParams } from 'react-router-dom'
 import usePagination from 'hooks/usePagination'
@@ -53,7 +53,7 @@ const Pagination = ({ newList }: Props) => {
                 &#60;
             </button>
             {filteredPagination?.map((page, idx) =>
-                page === OMIT_DOT ? (
+                page === ELLIPSIS ? (
                     <button className={S.page_btn} disabled key={uid(idx)}>
                         {page}
                     </button>
