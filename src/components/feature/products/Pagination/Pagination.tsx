@@ -1,5 +1,6 @@
 import React from 'react'
 import { uid } from 'react-uid'
+import { useSearchParams } from 'react-router-dom'
 
 import { useAppSelector } from 'store/store'
 import useDropDown from 'hooks/useDropDown'
@@ -7,7 +8,6 @@ import DropDown from 'components/shared/DropDown/DropDown'
 import S from './Pagination.module.scss'
 import { ELLIPSIS, PAGINATION_LIMIT, PAGINATION_LIMIT_OBJ } from 'constants/pagination'
 import { Products } from 'types/products'
-import { useSearchParams } from 'react-router-dom'
 import usePagination from 'hooks/usePagination'
 
 interface Props {
